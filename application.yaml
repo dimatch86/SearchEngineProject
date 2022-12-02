@@ -1,0 +1,36 @@
+spring.datasource:
+  url: jdbc:mysql://localhost:3306/myDB?useUnicode=true&serverTimezone=UTC
+  username: root
+  password: testtest
+spring.jpa.hibernate.ddl-auto: validate
+
+
+spring.jpa:
+    show-sql: false
+    properties.hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        jdbc.batch_size: 4
+        order_inserts: true
+        generate_statistics: false
+
+sitelist:
+  sites:
+    - url: https://nikoartgallery.com
+      name: Niko-ART
+    - url: https://ipfran.ru
+      name: IpFran
+    - url: https://www.svetlovka.ru
+      name: Svetlovka
+    - url: http://www.playback.ru
+      name: Playback
+    - url: https://et-cetera.ru/mobile
+      name: Et-Cetera
+
+  agent:
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+    referrer: http://www.google.com
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
