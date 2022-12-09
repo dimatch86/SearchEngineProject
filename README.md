@@ -1,3 +1,4 @@
+<a id = "top"></a>
 # SearchEngine
 ---
 Spring-MVC приложение, позволяющее обходить все страницы заданных сайтов и индексировать их так, чтобы потом находить наиболее релевантные страницы по любому поисковому запросу.
@@ -40,9 +41,9 @@ Spring-MVC приложение, позволяющее обходить все 
 ```
 ---
 ## Запуск и настройка
-Настройки для запуска приложения находятся в конфигурационном файле application.yaml.
+Настройки для запуска приложения находятся в конфигурационном файле `application.yaml`.
 
-```java
+```yaml
 spring.datasource:
   url: jdbc:mysql://localhost:3306/myDB?useUnicode=true&serverTimezone=UTC
   username: root
@@ -82,7 +83,7 @@ server:
 
 1. Перечень сайтов, которые необходимо индексировать. Это должен быть массив объектов, содержащих адрес и имя сайта. В перечне могут находиться как один, так и несколько сайтов. Адреса всех сайтов должны быть полные и не должны содержать слеш в конце.
 
-```java
+```yaml
 sites:
   - url: https://nikoartgallery.com
     name: Niko-ART
@@ -98,7 +99,7 @@ sites:
 
 2. Имя User-Agent, который необходимо подставлять при запросах страниц сайтов. Это необходимо, чтобы корректно представлять свой поисковый движок сайту.
 
-```java
+```yaml
 agent:
     user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
     referrer: http://www.google.com
@@ -106,7 +107,7 @@ agent:
 
 3. Данные доступа к локальной базе данных MySQL: хост, логин, пароль, имя базы.
 
-```java
+```yaml
 spring.datasource:
   url: jdbc:mysql://localhost:3306/myDB?useUnicode=true&serverTimezone=UTC
   username: root
@@ -124,7 +125,7 @@ spring.jpa.hibernate.ddl-auto: create
 
 4. Путь к веб-интерфейсу по умолчанию:
 
-```java
+```yaml
 server:
   port: 8080
   servlet:
@@ -137,3 +138,7 @@ http://localhost:8080
 ```
 
 Если всё сделано правильно, то приложение будет иметь вид:
+![pic3](pic3.jpg)
+Приложение готово к использованию!
+
+[В начало](#top)
