@@ -40,3 +40,100 @@ Spring-MVC приложение, позволяющее обходить все 
 ```
 ---
 ## Запуск и настройка
+Настройки для запуска приложения находятся в конфигурационном файле application.yaml.
+
+```java
+spring.datasource:
+  url: jdbc:mysql://localhost:3306/myDB?useUnicode=true&serverTimezone=UTC
+  username: root
+  password: testtest
+spring.jpa.hibernate.ddl-auto: validate
+
+
+spring.jpa:
+    show-sql: false
+    properties.hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        jdbc.batch_size: 4
+        order_inserts: true
+        generate_statistics: false
+
+sitelist:
+  sites:
+  - url: https://nikoartgallery.com
+    name: Niko-ART
+  - url:  https://ipfran.ru
+    name: IpFran
+  - url: https://www.svetlovka.ru
+    name: Svetlovka
+  - url: http://www.playback.ru
+    name: Playback
+  - url: https://et-cetera.ru/mobile
+    name: Et-Cetera
+  agent:
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+    referrer: http://www.google.com
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+```
+
+1. Перечень сайтов, которые необходимо индексировать. Это должен быть массив объектов, содержащих адрес и имя сайта. В перечне могут находиться как один, так и несколько сайтов. Адреса всех сайтов должны быть полные и не должны содержать слеш в конце.
+
+```java
+sites:
+  - url: https://nikoartgallery.com
+    name: Niko-ART
+  - url:  https://ipfran.ru
+    name: IpFran
+  - url: https://www.svetlovka.ru
+    name: Svetlovka
+  - url: http://www.playback.ru
+    name: Playback
+  - url: https://et-cetera.ru/mobile
+    name: Et-Cetera
+```
+
+2. Имя User-Agent, который необходимо подставлять при запросах страниц сайтов. Это необходимо, чтобы корректно представлять свой поисковый движок сайту.
+
+```java
+agent:
+    user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+    referrer: http://www.google.com
+```
+
+3. Данные доступа к локальной базе данных MySQL: хост, логин, пароль, имя базы.
+
+```java
+spring.datasource:
+  url: jdbc:mysql://localhost:3306/myDB?useUnicode=true&serverTimezone=UTC
+  username: root
+  password: testtest
+spring.jpa.hibernate.ddl-auto: validate
+```
+
+Создайте вашу локальную базу данных и задайте ее имя в конфигурации. При первом запуске приложения необходимо выставить настройку для создания всех необходимых таблиц: 
+
+```
+spring.jpa.hibernate.ddl-auto: create
+```
+Далее поменяйте эту настройку на validate или none и перезапустите приложение. 
+
+
+4. Путь к веб-интерфейсу по умолчанию:
+
+```java
+server:
+  port: 8080
+  servlet:
+    context-path: /
+```
+
+В браузере укажите путь к хосту на котором размещено веб-приложение:
+```
+http://localhost:8080
+```
+
+Если всё сделано правильно, то приложение будет иметь вид:
