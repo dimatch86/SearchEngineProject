@@ -30,9 +30,8 @@ Spring-MVC приложение, позволяющее обходить все 
 @Query(value = "SELECT * FROM page p " +
             "JOIN `index` i ON p.id = i.page_id " +
             "JOIN lemma l ON l.id = i.lemma_id " +
-            "JOIN site s ON s.id = p.site_id " +
             "WHERE l.lemma IN (:lemmasList) " +
-            "AND s.id = :id " +
+            "AND l.site_id = :id " +
             "GROUP BY p.path " +
             "HAVING COUNT(*) = :count " +
             "ORDER BY SUM(i.rank) DESC", nativeQuery = true)
